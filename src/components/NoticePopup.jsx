@@ -8,9 +8,17 @@ const NoticePopup = () => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        // Fetch popup configuration
-        fetch('/popup.json')
-            .then(res => res.json())
+        // Fetch popup configuration with correct base path
+        const jsonPath = `${import.meta.env.BASE_URL}popup.json`;
+        console.log("Fetching popup from:", jsonPath);
+
+        fetch(jsonPath)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
+            })
             .then(config => {
                 if (!config.show) return;
 
@@ -19,11 +27,17 @@ const NoticePopup = () => {
                 if (config.startDate && new Date(config.startDate) > now) return;
                 if (config.endDate && new Date(config.endDate) < now) return;
 
-                // Check local storage for "Don't show today"
-                const storageKey = `happy_clinic_popup_${config.id}`;
-                const expiry = localStorage.getItem(storageKey);
+                // Check local storage for "Don't show today" safely
+                try {
+                    const storageKey = `happy_clinic_popup_${config.id}`;
+                    const expiry = localStorage.getItem(storageKey);
 
-                if (!expiry || now.getTime() > parseInt(expiry, 10)) {
+                    if (!expiry || now.getTime() > parseInt(expiry, 10)) {
+                        setData(config);
+                        setVisible(true);
+                    }
+                } catch (e) {
+                    console.warn("LocalStorage access denied, showing popup anyway.");
                     setData(config);
                     setVisible(true);
                 }
@@ -33,9 +47,13 @@ const NoticePopup = () => {
 
     const handleClose = () => {
         if (dontShowToday && data) {
-            const storageKey = `happy_clinic_popup_${data.id}`;
-            const expiryDate = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours
-            localStorage.setItem(storageKey, expiryDate.toString());
+            try {
+                const storageKey = `happy_clinic_popup_${data.id}`;
+                const expiryDate = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours
+                localStorage.setItem(storageKey, expiryDate.toString());
+            } catch (e) {
+                console.warn("Could not save popup preference.");
+            }
         }
         setVisible(false);
     };
