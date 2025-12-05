@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Profile from './components/Profile';
@@ -6,21 +7,38 @@ import Hours from './components/Hours';
 import Location from './components/Location';
 import Footer from './components/Footer';
 import NoticePopup from './components/NoticePopup';
-import './App.css'; // Global App styles if needed, but I rely on index.css
+import MobileStickyBar from './components/MobileStickyBar';
+import './App.css';
 
 function App() {
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const sections = document.querySelectorAll('.fade-in-section');
+    sections.forEach(section => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="App">
       <NoticePopup />
       <Header />
       <main>
-        <Hero />
-        <Features />
-        <Profile />
-        <Hours />
-        <Location />
+        <div className="fade-in-section"><Hero /></div>
+        <div className="fade-in-section"><Features /></div>
+        <div className="fade-in-section"><Profile /></div>
+        <div className="fade-in-section"><Hours /></div>
+        <div className="fade-in-section"><Location /></div>
       </main>
       <Footer />
+      <MobileStickyBar />
     </div>
   );
 }

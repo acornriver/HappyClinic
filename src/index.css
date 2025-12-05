@@ -30,7 +30,8 @@ a {
   color: inherit;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -58,10 +59,24 @@ button {
   color: var(--color-primary);
 }
 
+/* Scroll Animation Styles */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, visibility;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 @media (max-width: 768px) {
   .section {
     padding: 60px 0;
   }
+
   .section-title {
     font-size: 1.75rem;
   }

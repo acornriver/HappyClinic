@@ -4,6 +4,45 @@
     height: 400px;
 }
 
+.notice {
+    background-color: #fff2f0;
+    /* Light red/orange background as requested */
+    border: 1px solid #ffccc7;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 40px;
+}
+
+.noticeTitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #cf1322;
+    /* Darker red for text */
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.noticeContent {
+    color: #434343;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.noticeContent p {
+    margin-bottom: 8px;
+}
+
+.noticeContent p:last-child {
+    margin-bottom: 0;
+}
+
+.noticeContent strong {
+    color: #cf1322;
+    font-weight: 700;
+}
+
 .info {
     flex: 1;
     display: flex;

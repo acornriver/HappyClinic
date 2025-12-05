@@ -16,12 +16,8 @@ const Hours = () => {
                             <span className={styles.time}>09:00 - 18:00</span>
                         </div>
                         <div className={styles.row}>
-                            <span className={styles.label}>수요일 (오전진료)</span>
-                            <span className={styles.time}>09:00 - 12:00</span>
-                        </div>
-                        <div className={styles.row}>
-                            <span className={styles.label}>토요일 (점심시간 없음)</span>
-                            <span className={styles.time}>09:00 - 12:00</span>
+                            <span className={styles.label}>수요일 / 토요일 (Wed / Sat)</span>
+                            <span className={styles.time}>09:00 - 12:00 (오전 진료)</span>
                         </div>
                         <div className={`${styles.row} ${styles.sunday}`}>
                             <span className={styles.label}>일요일 (오후진료)</span>

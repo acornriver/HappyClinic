@@ -1,7 +1,7 @@
 import styles from './Features.module.css';
 import imgKiosk from '../assets/img/KakaoTalk_Photo_2025-12-05-13-16-16 003.jpeg';
 import imgIV from '../assets/img/KakaoTalk_Photo_2025-12-05-13-16-16 004.jpeg';
-import imgEquip from '../assets/img/KakaoTalk_Photo_2025-12-05-13-16-16 005.jpeg';
+import imgEquip from '../assets/img/KakaoTalk_Phot-13-16-16 006.jpeg';
 
 const Features = () => {
     const featureList = [
