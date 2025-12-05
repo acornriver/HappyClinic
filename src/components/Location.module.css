@@ -5,9 +5,9 @@
 }
 
 .notice {
-    background-color: #fff2f0;
-    /* Light red/orange background as requested */
-    border: 1px solid #ffccc7;
+    background-color: #f0f5ff;
+    /* Light blue background for info/guide style */
+    border: 1px solid #adc6ff;
     border-radius: 12px;
     padding: 24px;
     margin-bottom: 40px;
@@ -17,8 +17,8 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #cf1322;
-    /* Darker red for text */
+    color: #2f54eb;
+    /* Blue for text */
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 16px;
@@ -39,7 +39,7 @@
 }
 
 .noticeContent strong {
-    color: #cf1322;
+    color: #2f54eb;
     font-weight: 700;
 }
 

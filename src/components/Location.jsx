@@ -1,5 +1,5 @@
 import styles from './Location.module.css';
-import { MapPin, Phone, Car, AlertCircle } from 'lucide-react';
+import { MapPin, Phone, Car, Info } from 'lucide-react';
 import mapImg from '../assets/img/static_naver_map.png';
 
 const Location = () => {
@@ -10,13 +10,12 @@ const Location = () => {
 
                 <div className={styles.notice}>
                     <div className={styles.noticeTitle}>
-                        <AlertCircle size={24} />
+                        <Info size={24} />
                         <span>네이버 예약 이용 안내</span>
                     </div>
                     <div className={styles.noticeContent}>
-                        <p><strong>⚠️ 초진 불가 / 재진만 가능:</strong> 병원에 처음 오시는 분은 접수대에서 현장 접수를 부탁드립니다.</p>
-                        <p><strong>🚫 당일 예약 불가:</strong> 예약은 진료 희망일 <strong>전날</strong>까지만 가능합니다.</p>
-                        <p><strong>✅ 예약 방법:</strong> 네이버 예약은 하단 네이버 지도 링크에서 가능합니다.</p>
+                        <p>✅ <strong>당일 예약 가능:</strong> 진료 희망 시간 <strong>3시간 전</strong>까지 예약이 가능합니다. (예: 오전에 오후 진료 예약 가능)</p>
+                        <p>⚠️ <strong>초진 불가 / 재진만 가능:</strong> 병원에 처음 오시는 분은 접수대에서 현장 접수를 부탁드립니다.</p>
                     </div>
                 </div>
                 <div className={styles.wrapper}>
