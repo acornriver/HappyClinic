@@ -1,0 +1,102 @@
+.hoursSection {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.hoursSection :global(.section-title) {
+    color: white;
+}
+
+.card {
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 16px;
+    color: var(--color-text);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.iconWrapper {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-accent);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.schedule {
+    margin-top: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1rem;
+}
+
+.label {
+    font-weight: 500;
+}
+
+.time {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.sunday {
+    color: #ff4d4f;
+    /* Red for emphasis */
+    font-weight: bold;
+    background-color: #fff1f0;
+    padding: 15px 10px;
+    margin: 0 -10px;
+    border-radius: 8px;
+    border-bottom: none;
+}
+
+.sunday .time {
+    color: #ff4d4f;
+}
+
+.lunchRow {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    color: #666;
+}
+
+.lunchLabel {
+    font-weight: 600;
+}
+
+.note {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+@media (max-width: 600px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        text-align: center;
+    }
+}

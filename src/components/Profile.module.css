@@ -1,0 +1,85 @@
+.profileSection {
+    background-color: #f8f9fa;
+}
+
+.wrapper {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.imageCol {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.profileImage {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    border: 1px solid #eee;
+}
+
+.doctorTitle {
+    font-size: 1.5rem;
+    color: var(--color-primary-dark);
+    font-weight: 700;
+    opacity: 0.3;
+}
+
+.contentCol {
+    flex: 1.5;
+}
+
+.name {
+    font-size: 1.8rem;
+    color: var(--color-text);
+    margin-bottom: 20px;
+}
+
+.divider {
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-accent);
+    margin-bottom: 30px;
+}
+
+.careerList li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+.careerList li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .contentCol {
+        width: 100%;
+    }
+
+    .imagePlaceholder {
+        width: 200px;
+        height: 260px;
+    }
+}
