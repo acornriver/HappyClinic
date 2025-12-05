@@ -50,24 +50,31 @@
     text-align: center;
 }
 
-.content h4 {
+.mobileTitle {
     font-size: 1.3rem;
     color: var(--color-primary);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    display: block;
 }
 
-.content p {
+.messageList {
+    margin-bottom: 25px;
+}
+
+.messageLine {
     color: #555;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     line-height: 1.6;
+    font-size: 1.05rem;
 }
 
 .campaign {
     background-color: #f0f7ff;
-    padding: 10px;
+    padding: 12px;
     border-radius: 6px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--color-primary-dark);
+    font-weight: 600;
 }
 
 .footer {

@@ -2,48 +2,69 @@ import { useState, useEffect } from 'react';
 import styles from './NoticePopup.module.css';
 import { X } from 'lucide-react';
 
-const NOTICE_KEY = 'happy_clinic_notice_2025_12_05'; // Unique key for this notice
-
 const NoticePopup = () => {
     const [visible, setVisible] = useState(false);
     const [dontShowToday, setDontShowToday] = useState(false);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
-        const expiry = localStorage.getItem(NOTICE_KEY);
-        const now = new Date().getTime();
+        // Fetch popup configuration
+        fetch('/popup.json')
+            .then(res => res.json())
+            .then(config => {
+                if (!config.show) return;
 
-        if (!expiry || now > parseInt(expiry, 10)) {
-            setVisible(true);
-        }
+                // Check date range if provided
+                const now = new Date();
+                if (config.startDate && new Date(config.startDate) > now) return;
+                if (config.endDate && new Date(config.endDate) < now) return;
+
+                // Check local storage for "Don't show today"
+                const storageKey = `happy_clinic_popup_${config.id}`;
+                const expiry = localStorage.getItem(storageKey);
+
+                if (!expiry || now.getTime() > parseInt(expiry, 10)) {
+                    setData(config);
+                    setVisible(true);
+                }
+            })
+            .catch(err => console.error("Failed to load popup config:", err));
     }, []);
 
     const handleClose = () => {
-        if (dontShowToday) {
-            const expiryDate = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours later
-            localStorage.setItem(NOTICE_KEY, expiryDate.toString());
+        if (dontShowToday && data) {
+            const storageKey = `happy_clinic_popup_${data.id}`;
+            const expiryDate = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours
+            localStorage.setItem(storageKey, expiryDate.toString());
         }
         setVisible(false);
     };
 
-    if (!visible) return null;
+    if (!visible || !data) return null;
 
     return (
         <div className={styles.overlay}>
             <div className={styles.popup}>
                 <div className={styles.header}>
-                    <h3>공지사항</h3>
+                    <h3>{data.title}</h3>
                     <button onClick={handleClose} className={styles.closeBtn}><X size={20} /></button>
                 </div>
                 <div className={styles.content}>
-                    <h4>독감 예방접종 실시 중</h4>
-                    <p>
-                        본원은 현재 <strong>독감 예방접종 지정 의료기관</strong>입니다.<br />
-                        재고 소진 시까지 접종 가능하오니,<br />
-                        내원 전 문의 바랍니다.
-                    </p>
-                    <div className={styles.campaign}>
-                        <span>접종 대상: 생후 6개월 ~ 13세 어린이, 임신부, 65세 이상 어르신</span>
+                    <h4 className={styles.mobileTitle}>{data.title}</h4>
+                    <div className={styles.messageList}>
+                        {data.messages.map((msg, index) => (
+                            <p key={index} className={styles.messageLine}>
+                                {msg.split('\n').map((line, i) => (
+                                    <span key={i}>{line}<br /></span>
+                                ))}
+                            </p>
+                        ))}
                     </div>
+                    {data.highlight && (
+                        <div className={styles.campaign}>
+                            <span>{data.highlight}</span>
+                        </div>
+                    )}
                 </div>
                 <div className={styles.footer}>
                     <label className={styles.checkboxLabel}>
