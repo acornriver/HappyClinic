@@ -17,15 +17,16 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #2f54eb;
-    /* Blue for text */
+    color: var(--color-primary);
+    /* Use global primary blue */
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 16px;
 }
 
 .noticeContent {
-    color: #434343;
+    color: var(--color-text);
+    /* Use global text color */
     font-size: 1rem;
     line-height: 1.6;
 }
@@ -39,7 +40,8 @@
 }
 
 .noticeContent strong {
-    color: #2f54eb;
+    color: var(--color-primary);
+    /* Use global primary blue */
     font-weight: 700;
 }
 
@@ -76,11 +78,13 @@
 .item h4 {
     font-size: 1.1rem;
     margin-bottom: 5px;
-    color: var(--color-primary-dark);
+    color: var(--color-heading);
+    /* Use global heading color */
 }
 
 .item p {
-    color: #555;
+    color: var(--color-text);
+    /* Use global text color */
     line-height: 1.5;
 }
 

@@ -1,13 +1,18 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
 :root {
-  --color-primary: #0056b3;
-  --color-primary-dark: #004494;
+  --color-primary: #2563eb;
+  /* Modern Royal Blue */
+  --color-primary-dark: #1e40af;
+  /* Deep Blue */
   --color-accent: #F5A623;
   --color-bg: #FFFFFF;
-  --color-text: #333333;
-  --color-text-light: #666666;
-  --color-border: #EEEEEE;
+  --color-text: #374151;
+  /* Cool Gray 700 - Softer body text */
+  --color-heading: #111827;
+  /* Cool Gray 900 - Sharp, deep headings */
+  --color-border: #e5e7eb;
+  /* Lighter border */
   --font-main: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
@@ -17,12 +22,24 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-main);
   color: var(--color-text);
   background-color: var(--color-bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--color-heading);
 }
 
 a {
@@ -57,6 +74,7 @@ button {
   text-align: center;
   margin-bottom: 40px;
   color: var(--color-primary);
+  letter-spacing: -0.5px;
 }
 
 /* Scroll Animation Styles */
@@ -74,7 +92,7 @@ button {
 
 @media (max-width: 768px) {
   .section {
-    padding: 60px 0;
+    padding: 40px 0;
   }
 
   .section-title {
