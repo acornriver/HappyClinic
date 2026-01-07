@@ -15,24 +15,30 @@
 .popup {
     background-color: white;
     width: 90%;
-    max-width: 400px;
+    max-width: 550px;
+    /* Increased max-width for better PC view */
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     animation: fadeIn 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    /* Prevent it from being too tall on small screens */
 }
 
 .header {
     background-color: var(--color-primary);
     color: white;
-    padding: 15px 20px;
+    padding: 15px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .header h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     margin: 0;
 }
@@ -43,47 +49,87 @@
     padding: 0;
     display: flex;
     align-items: center;
+    cursor: pointer;
+    border: none;
 }
 
 .content {
-    padding: 25px 20px;
-    text-align: center;
+    padding: 30px 30px;
+    text-align: left;
+    /* Align text left for list readability */
+    overflow-y: auto;
+    /* Allow scrolling if content is long */
 }
 
 .mobileTitle {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: var(--color-primary);
-    margin-bottom: 20px;
-    display: block;
+    margin-bottom: 25px;
+    display: none;
+    /* Hide duplicate title inside content on PC, can show on mobile if header is hidden or different style */
+    text-align: center;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .mobileTitle {
+        display: block;
+        margin-top: 5px;
+    }
+
+    .header {
+        /* Optional: Hide or simplify header on mobile if redundant */
+        /* display: none; */
+    }
+
+    .popup {
+        max-width: 90%;
+    }
+
+    .content {
+        padding: 20px 20px;
+    }
 }
 
 .messageList {
     margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .messageLine {
-    color: #555;
-    margin-bottom: 10px;
+    color: #333;
+    /* Darker text for better contrast */
+    margin-bottom: 0px;
     line-height: 1.6;
-    font-size: 1.05rem;
+    font-size: 1rem;
+    text-align: left;
+    word-break: keep-all;
+    /* Prevent awkward word breaks in Korean */
 }
 
 .campaign {
     background-color: #f0f7ff;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 0.95rem;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
     color: var(--color-primary-dark);
-    font-weight: 600;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Subtle shadow for emphasis */
 }
 
 .footer {
-    padding: 15px 20px;
+    padding: 15px 25px;
     border-top: 1px solid #eee;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #f9f9f9;
+    flex-shrink: 0;
 }
 
 .checkboxLabel {
@@ -98,10 +144,12 @@
 .confirmBtn {
     background-color: #333;
     color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.95rem;
     transition: background 0.2s;
+    border: none;
+    cursor: pointer;
 }
 
 .confirmBtn:hover {
