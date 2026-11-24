@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Profile from './components/Profile';
 import Features from './components/Features';
+import Services from './components/Services';
 import Hours from './components/Hours';
 import Location from './components/Location';
 import Footer from './components/Footer';
@@ -16,6 +17,7 @@ function App() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
@@ -31,7 +33,8 @@ function App() {
       <NoticePopup />
       <Header />
       <main>
-        <div className="fade-in-section"><Hero /></div>
+        <Hero />
+        <div className="fade-in-section"><Services /></div>
         <div className="fade-in-section"><Features /></div>
         <div className="fade-in-section"><Profile /></div>
         <div className="fade-in-section"><Hours /></div>

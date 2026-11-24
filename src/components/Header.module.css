@@ -24,6 +24,7 @@
 }
 
 .logo {
+    text-decoration: none;
     font-size: 1.5rem;
     font-weight: 800;
     color: var(--color-primary);
@@ -64,6 +65,7 @@
     }
 
     .nav {
+        visibility: hidden;
         position: fixed;
         top: 80px;
         left: 0;
@@ -74,12 +76,13 @@
         align-items: center;
         gap: 0;
         overflow: hidden;
-        transition: height 0.3s ease-out;
+        transition: height 0.3s ease-out, visibility 0.3s;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     }
 
     .nav.mobileOpen {
-        height: 240px;
+        visibility: visible;
+        height: 335px;
         border-bottom: 1px solid #eee;
     }
 

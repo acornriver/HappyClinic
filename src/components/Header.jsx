@@ -2,50 +2,49 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import styles from './Header.module.css';
 
+const NAV_ITEMS = [
+    { id: 'services', label: '진료과목' },
+    { id: 'profile', label: '의료진 소개' },
+    { id: 'hours', label: '진료시간' },
+    { id: 'features', label: '병원둘러보기' },
+    { id: 'location', label: '오시는 길' },
+];
+
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
+        const handleScroll = () => setIsScrolled(window.scrollY > 50);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const scrollToSection = (id) => {
-        setIsMobileMenuOpen(false);
-        const element = document.getElementById(id);
-        if (element) {
-            const headerOffset = 80;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
-        }
-    };
+    const closeMenu = () => setIsMobileMenuOpen(false);
 
     return (
         <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
             <div className={`container ${styles.container}`}>
-                <div className={styles.logo} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                <a href="#home" className={styles.logo} onClick={closeMenu}>
                     행복한가정의학과
-                </div>
+                </a>
 
-                <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.mobileOpen : ''}`}>
-                    <a onClick={() => scrollToSection('profile')}>의료진 소개</a>
-                    <a onClick={() => scrollToSection('hours')}>진료시간</a>
-                    <a onClick={() => scrollToSection('features')}>병원둘러보기</a>
-                    <a onClick={() => scrollToSection('location')}>오시는 길</a>
+                <nav
+                    id="main-nav"
+                    className={`${styles.nav} ${isMobileMenuOpen ? styles.mobileOpen : ''}`}
+                    aria-label="주요 메뉴"
+                >
+                    {NAV_ITEMS.map(item => (
+                        <a key={item.id} href={`#${item.id}`} onClick={closeMenu}>{item.label}</a>
+                    ))}
                 </nav>
 
                 <button
                     className={styles.mobileToggle}
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    aria-label="Toggle menu"
+                    onClick={() => setIsMobileMenuOpen(open => !open)}
+                    aria-label={isMobileMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
+                    aria-expanded={isMobileMenuOpen}
+                    aria-controls="main-nav"
                 >
                     {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>

@@ -10,7 +10,7 @@
     padding: 10px;
     /* Safe area padding */
     gap: 10px;
-    padding-bottom: env(safe-area-inset-bottom, 20px);
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
     /* Handle iPhone X+ safe area */
 }
 
@@ -29,12 +29,20 @@
 }
 
 .callBtn {
-    background-color: #03C75A;
-    /* Naver/Call Green */
+    background-color: var(--color-primary);
     color: white;
 }
 
 .callBtn:active {
+    background-color: var(--color-primary-dark);
+}
+
+.bookBtn {
+    background-color: #03C75A;
+    color: white;
+}
+
+.bookBtn:active {
     background-color: #02b351;
 }
 

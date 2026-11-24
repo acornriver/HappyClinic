@@ -100,3 +100,82 @@
         text-align: center;
     }
 }
+.statusWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 12px 0 4px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    background-color: #f3f4f6;
+    color: #6b7280;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+.open {
+    background-color: #e8f8ef;
+    color: #059669;
+}
+
+.open .dot {
+    animation: pulse 1.6s ease-in-out infinite;
+}
+
+.lunch,
+.before {
+    background-color: #fff7e6;
+    color: #b45309;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: 0.3;
+    }
+}
+
+.today {
+    background-color: #eff6ff;
+    margin: 0 -10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 8px;
+}
+
+.sunday.today {
+    background-color: #fff1f0;
+}
+
+.todayBadge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 1px 8px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    background-color: var(--color-primary);
+    vertical-align: middle;
+}
+
+.sunday .todayBadge {
+    background-color: #ff4d4f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .open .dot {
+        animation: none;
+    }
+}

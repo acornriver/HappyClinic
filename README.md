@@ -3,7 +3,7 @@
 천안에 위치한 **행복한가정의학과** 의원의 병원 소개 및 환자 안내를 위한 반응형 웹사이트 프로젝트입니다.
 React와 Vite를 사용하여 빠르고 모던한 웹 환경을 구축하였으며, 환자들에게 신뢰감을 주는 디자인과 필수적인 진료 정보를 제공하는 데 중점을 두었습니다.
 
-🔗 **배포 사이트 바로가기:** [https://acornriver.github.io/HappyClinic/](https://acornriver.github.io/HappyClinic/)
+🔗 **배포 사이트 바로가기:** [https://happy-fm.com](https://happy-fm.com)
 
 ---
 
@@ -21,10 +21,13 @@ React와 Vite를 사용하여 빠르고 모던한 웹 환경을 구축하였으�
 
 2.  **진료 시간 안내 (반응형 테이블)**
     * 평일, 수/토(오전 진료), 일요일(오후 진료), 공휴일 안내
+    * 오늘 요일 강조 및 "지금 진료 중 / 점심시간 / 진료 종료" 실시간 표시 (한국 시간 기준)
     * **업데이트:** 수요일과 토요일 진료 시간을 통합하여 가독성 개선
 
 3.  **공지사항 팝업 (Modal)**
     * 사이트 접속 시 독감 예방접종 등 주요 공지 노출
+    * `public/popup.json`만 수정하면 재배포 없이 내용 변경 가능 (`show`, `startDate`, `endDate`로 노출 기간 지정)
+    * ⚠️ 문구 작성 시 의료법 제56조(최상급·비교 표현 금지), 제27조(본인부담금 면제 등 환자 유인 금지)에 유의
     * '오늘 하루 보지 않기' 기능 (Local Storage 활용) 구현
 
 4.  **진료 및 시설 안내**
@@ -32,7 +35,8 @@ React와 Vite를 사용하여 빠르고 모던한 웹 환경을 구축하였으�
 
 5.  **네이버 예약 및 이용 안내**
     * ⚠️ **초진 불가 / 재진만 가능** 안내
-    * 🚫 **당일 예약 불가** (전날 예약 필수) 안내 문구 강조
+    * ✅ **당일 예약 가능** (진료 희망 시간 3시간 전까지) 안내
+    * 네이버 예약 바로가기 버튼 (Hero · 오시는 길 · 모바일 하단바)
 
 6.  **오시는 길**
     * 주소, 전화번호, 주차 가능 여부 안내
@@ -55,7 +59,7 @@ React와 Vite를 사용하여 빠르고 모던한 웹 환경을 구축하였으�
 
 1.  **저장소 클론 (Clone)**
     ```bash
-    git clone [https://github.com/acornriver/HappyClinic.git](https://github.com/acornriver/HappyClinic.git)
+    git clone https://github.com/acornriver/HappyClinic.git
     cd HappyClinic
     ```
 
@@ -81,16 +85,19 @@ React와 Vite를 사용하여 빠르고 모던한 웹 환경을 구축하였으�
 
 ```text
 src/
-├── assets/         # 이미지 및 정적 파일
+├── assets/img/     # 이미지 (WebP로 압축해서 넣기)
+├── data/clinic.js  # 주소·전화·예약 링크·요일별 진료시간 (한 곳에서 관리)
 ├── components/     # React 컴포넌트
 │   ├── Header.jsx      # 상단 네비게이션
 │   ├── Hero.jsx        # 메인 비주얼 배너
+│   ├── Services.jsx    # 진료 과목
 │   ├── Profile.jsx     # 의료진 소개
 │   ├── Hours.jsx       # 진료 시간표 (수/토 통합)
 │   ├── Location.jsx    # 오시는 길 및 예약 안내
 │   ├── Features.jsx    # 병원 시설/장비 소개
 │   ├── NoticePopup.jsx # 공지사항 팝업
+│   ├── MobileStickyBar.jsx # 모바일 하단 전화/예약/길찾기 바
 │   └── Footer.jsx      # 하단 정보
-├── App.css         # 전역 스타일
+├── index.css       # 전역 스타일
 ├── App.jsx         # 메인 레이아웃
 └── main.jsx        # 진입점

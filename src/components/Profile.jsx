@@ -1,5 +1,5 @@
 import styles from './Profile.module.css';
-import profileImg from '../assets/img/profile.png';
+import profileImg from '../assets/img/profile.webp';
 
 const Profile = () => {
     const careers = [
@@ -23,14 +23,14 @@ const Profile = () => {
                 <h2 className="section-title">의료진 소개</h2>
                 <div className={styles.wrapper}>
                     <div className={styles.imageCol}>
-                        <img src={profileImg} alt="원장님 프로필" className={styles.profileImage} />
+                        <img src={profileImg} alt="강기형 대표원장" className={styles.profileImage} loading="lazy" decoding="async" />
                     </div>
                     <div className={styles.contentCol}>
                         <h3 className={styles.name}>원장 약력</h3>
                         <div className={styles.divider}></div>
                         <ul className={styles.careerList}>
-                            {careers.map((item, index) => (
-                                <li key={index}>{item}</li>
+                            {careers.map((item) => (
+                                <li key={item}>{item}</li>
                             ))}
                         </ul>
                     </div>

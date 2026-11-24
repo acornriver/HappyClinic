@@ -45,6 +45,25 @@
     font-weight: 700;
 }
 
+.bookingBtn {
+    display: inline-block;
+    margin-top: 16px;
+    background-color: #03C75A;
+    color: white;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+.bookingBtn:hover {
+    background-color: #02a84c;
+}
+
+.mapLink:focus-visible .mapOverlay {
+    opacity: 1;
+}
+
 .info {
     flex: 1;
     display: flex;

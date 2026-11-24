@@ -75,7 +75,24 @@
     border-radius: 50px;
     transition: all 0.3s;
     box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
+}
+
+.ctaGroup {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
     animation: slideUp 0.8s ease-out 0.4s backwards;
+}
+
+.ctaSecondary {
+    background-color: #03C75A;
+    box-shadow: 0 4px 15px rgba(3, 199, 90, 0.35);
+}
+
+.ctaSecondary:hover {
+    background-color: #02a84c;
+    box-shadow: 0 6px 20px rgba(3, 199, 90, 0.45);
 }
 
 .ctaButton:hover {

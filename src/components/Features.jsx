@@ -1,7 +1,7 @@
 import styles from './Features.module.css';
-import imgKiosk from '../assets/img/KakaoTalk_Photo_2025-12-05-13-16-16 003.jpeg';
-import imgIV from '../assets/img/KakaoTalk_Photo_2025-12-05-13-16-16 004.jpeg';
-import imgEquip from '../assets/img/KakaoTalk_Phot-13-16-16 006.jpeg';
+import imgKiosk from '../assets/img/kiosk.webp';
+import imgIV from '../assets/img/iv-clinic.webp';
+import imgEquip from '../assets/img/equipment.webp';
 
 const Features = () => {
     const featureList = [
@@ -15,10 +15,10 @@ const Features = () => {
             <div className="container">
                 <h2 className="section-title">병원 둘러보기</h2>
                 <div className={styles.grid}>
-                    {featureList.map((f, i) => (
-                        <div key={i} className={styles.card}>
+                    {featureList.map((f) => (
+                        <div key={f.title} className={styles.card}>
                             <div className={styles.imgWrapper}>
-                                <img src={f.img} alt={f.title} />
+                                <img src={f.img} alt={f.title} loading="lazy" decoding="async" width="1200" height="900" />
                             </div>
                             <div className={styles.textWrapper}>
                                 <h3>{f.title}</h3>
